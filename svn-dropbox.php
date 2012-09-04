@@ -29,8 +29,10 @@ foreach ($directories as $directory) {
     // update and keep my paths
     $update = array();
     exec(SVN . ' update "' . $directory . '" --accept mine-full', $update);
-    foreach ($update as $msg) {
-        write('[update] ' . trim($msg));
+    if (count($update) > 1) {
+        foreach ($update as $msg) {
+            write('[update] ' . trim($msg));
+        }
     }
 
     // figure out the status of every path
