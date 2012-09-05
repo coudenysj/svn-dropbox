@@ -12,15 +12,15 @@ used to delete a file on the server as wel.
 
 * svn up --accept mine-full (with conflict resolution: use mine, because their version is already in Subversion)
 * svn status
-** A: ok
-** D: ok
-** M: ok
-** C: not possile (log)
-** X: not possile (log)
-** I: ok (ignored)
-** !: mark deleted (missing)
-** ?: add (non-versioned)
-** ~: not possible (log)
+ * A: ok
+ * D: ok
+ * M: ok
+ * C: not possile (log)
+ * X: not possile (log)
+ * I: ok (ignored)
+ * !: mark deleted (missing)
+ * ?: add (non-versioned)
+ * ~: not possible (log)
 * svn commit
 
 ## notes
