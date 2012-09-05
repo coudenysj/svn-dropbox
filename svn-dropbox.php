@@ -3,7 +3,7 @@
 /**
  * @see README.md
  * @author jachimcoudenys@gmail.com
- * @license DWTFYWWI
+ * @license WTFPL
  */
 define('SVN', '/usr/bin/env svn');
 define('LOG', '/var/log/svn-dropbox.log');
