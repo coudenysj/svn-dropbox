@@ -9,7 +9,7 @@ define('SVN', '/usr/bin/env svn');
 define('LOG', '/var/log/svn-dropbox.log');
 
 $directories = array(
-    '/tmp/svn-repository-checkout'
+    '/tmp/svn-repository-checkout/'
 );
 
 function write($msg)
@@ -24,6 +24,20 @@ foreach ($directories as $directory) {
         throw new \InvalidArgumentException(
             'Directory "' . $directory . '" does not exist'
         );
+    }
+
+    // mark the missing as delete, before svn up adds them back
+    $status = array();
+    exec(SVN . ' status "' . $directory . '" 2>/dev/null', $status);
+    if (!empty($status)) {
+        foreach ($status as $line) {
+            $flag = substr($line, 0, 1);
+            $path = trim(substr($line, 5));
+            if ($flag == '!') {
+                exec(SVN . ' rm -q --force "' . $path . '"');
+                write('[rm] ' . $path);
+            }
+        }
     }
 
     // update and keep my paths

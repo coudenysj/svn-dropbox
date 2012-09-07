@@ -31,3 +31,4 @@ used to delete a file on the server as wel.
 ## todo
 
 * See if a file in the status list is locked (os level) and abort everything
+* Put it in a class so I can reuse parts
